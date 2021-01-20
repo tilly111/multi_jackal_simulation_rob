@@ -44,4 +44,8 @@ roslaunch multi_jackal_base two_jackal.launch
 
 
 ZED Camera currently not supported in Gazebo.
-For a quick fix you can change the argument config in the file base_jackal.launch to "front_bumblebee2"
+For a quick fix you can change the argument config in the file base_jackal.launch to "front_bumblebee2" 
+
+DAS IST EIN TEST
+Ein weiterer test
+
