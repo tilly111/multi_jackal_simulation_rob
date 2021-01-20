@@ -28,9 +28,9 @@
   </include>
 
   <!-- View in RVIZ. -->
-  <group if="$(arg rviz)">
+  <!--<group if="$(arg rviz)">
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_jackal_base)/rviz/two_jackals.rviz" >
     </node>
-  </group>
+  </group> -->
 
 </launch>
