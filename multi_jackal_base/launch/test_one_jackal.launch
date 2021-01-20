@@ -4,7 +4,7 @@
   <arg name="gui"       default="true"/>
   <arg name="rviz"      default="true"/>
   <arg name="config"    default="base" />
-  <arg name="world"     default="$(find multi_jackal_simulation_rob)/worlds/testWorld.world"/>
+  <arg name="world"     default="$multi_jackal_simulation_rob/worlds/testWorld.world"/>
   <arg name="ns1"       default="jackal1"/>
   <arg name="ns2"       default="jackal2"/>
 
