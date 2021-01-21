@@ -23,6 +23,10 @@ class velo_publisher():
         self.vel_msg.angular.z = 0
         self.reset_time=3.0
 
+        # init the listener?
+        rospy.init_node('listener', anonymous=True)
+        self.sub = rospy.Subscriber("chatter", topic, listener_callback)
+
     def publish(self):
         # self.vel_msg.linear.x = random.random()
         # self.vel_msg.angular.z = random.uniform(-1, 1)
@@ -45,10 +49,6 @@ if __name__ == '__main__':
         topic=ns+"/cmd_vel"  # topic /cmd_vel published direkt an die motoren; muss eine Twist msg sein -> zyklisch
         vp = velo_publisher(topic)
         vp.reset_var()
-
-        # init the listener?
-        rospy.init_node('listener', anonymous=True)
-        rospy.Subscriber("chatter", topic, listener_callback)
 
         while True:
             vp.publish()
