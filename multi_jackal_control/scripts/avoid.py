@@ -43,6 +43,12 @@ class velo_publisher():
     def listener_callback(self, data):
         #print("callback worked irgendwie")
         print(data.pose.pose)
+
+        if data.pose.pose.position.x > 5 or data.pose.pose.position.x > -5 or data.pose.pose.position.y > 5 or data.pose.pose.position.y > -5 :
+            self.vel_msg.angular.z = 1
+        else:
+            self.vel_msg.angular.z = 0
+
         return
 
 if __name__ == '__main__':
@@ -50,7 +56,7 @@ if __name__ == '__main__':
         ns=sys.argv[1]
         topic=ns+"/cmd_vel"  # topic /cmd_vel published direkt an die motoren; muss eine Twist msg sein -> zyklisch
         vp = velo_publisher(topic)
-        vp.reset_var()
+        #vp.reset_var()
 
         while True:
             vp.publish()
