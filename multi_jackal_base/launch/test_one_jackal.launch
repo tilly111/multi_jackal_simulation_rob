@@ -20,14 +20,15 @@
     <arg name="headless" value="false" />
   </include>
 
+
   <!-- Spawn the robots. -->
-  <include file="$(find multi_jackal_base)/launch/base_jackal.launch">
+  <!--<include file="$(find multi_jackal_base)/launch/base_jackal.launch">
     <arg name="ns"            value="$(arg ns2)"/>
     <arg name="config"        default="$(arg config)" />
     <arg name="x"             value="1"/>
     <arg name="y"             value="1"/>
-  </include>
-
+  </include> -->
+               
   <!-- View in RVIZ. -->
   <!--<group if="$(arg rviz)">
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_jackal_base)/rviz/two_jackals.rviz" >
