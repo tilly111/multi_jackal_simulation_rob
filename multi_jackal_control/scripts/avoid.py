@@ -24,8 +24,8 @@ class velo_publisher():
         self.reset_time=3.0
 
         # init the listener?
-        rospy.init_node('listener', anonymous=True)
-        self.sub = rospy.Subscriber("chatter", topic, listener_callback)
+        #rospy.init_node('listener', anonymous=True)
+        #self.sub = rospy.Subscriber("chatter", topic, listener_callback)
 
     def publish(self):
         # self.vel_msg.linear.x = random.random()
