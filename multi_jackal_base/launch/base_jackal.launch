@@ -28,7 +28,7 @@
     <arg name="yaw"       value="$(arg yaw)"/>
   </include>
 
-  <node pkg="multi_jackal_control" name="$(arg ns)_random_explore" type="avoid.py" output="screen" args="$(arg ns)"/>
+  <node pkg="multi_jackal_control" name="$(arg ns)_avoid" type="avoid.py" output="screen" args="$(arg ns)"/>
 
 
   <!-- Spawn Jackal -->

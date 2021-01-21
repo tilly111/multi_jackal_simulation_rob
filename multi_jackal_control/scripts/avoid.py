@@ -12,7 +12,7 @@ import threading
 
 class velo_publisher():
     def __init__(self, topic):
-        rospy.init_node('random_explore')
+        rospy.init_node('avoid')
         self.pub = rospy.Publisher(topic, Twist, queue_size=10)
         self.vel_msg=Twist()
         self.vel_msg.linear.x = 0
@@ -34,12 +34,21 @@ class velo_publisher():
         self.vel_msg.angular.z = random.uniform(-1, 1)
         threading.Timer(self.reset_time, self.reset_var).start()
 
+    def listener_callback(self):
+        print("callback worked irgendwie")
+        return
+
 if __name__ == '__main__':
     try:
         ns=sys.argv[1]
-        topic=ns+"/cmd_vel"
+        topic=ns+"/cmd_vel"  # topic /cmd_vel published direkt an die motoren; muss eine Twist msg sein -> zyklisch
         vp = velo_publisher(topic)
         vp.reset_var()
+
+        # init the listener?
+        rospy.init_node('listener', anonymous=True)
+        rospy.Subscriber("chatter", topic, listener_callback)
+
         while True:
             vp.publish()
             rospy.sleep(0.2)
