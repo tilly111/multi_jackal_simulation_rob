@@ -6,6 +6,7 @@
 #additional imports
 import rospy
 from geometry_msgs.msg import Twist
+from nav_msgs.msg import Odometry
 import random
 import sys
 import threading
@@ -24,7 +25,7 @@ class velo_publisher():
         self.reset_time=3.0
 
         # init the listener?
-        self.sub = rospy.Subscriber(topic, Twist, self.listener_callback)
+        self.sub = rospy.Subscriber(ns+"/odom", Odometry, self.listener_callback)
 
     def publish(self):
         # self.vel_msg.linear.x = random.random()
@@ -39,7 +40,8 @@ class velo_publisher():
 
 
     def listener_callback(self, data):
-        print("callback worked irgendwie")
+        #print("callback worked irgendwie")
+        print(data.pose.pose)
         return
 
 if __name__ == '__main__':
@@ -52,7 +54,7 @@ if __name__ == '__main__':
         while True:
             vp.publish()
             rospy.sleep(0.2)
-            print("debug print ")
+            #print("debug print ")
 
     except rospy.ROSInterruptException or KeyboardInterrupt: pass
 
