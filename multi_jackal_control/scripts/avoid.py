@@ -59,7 +59,7 @@ class velo_publisher():
             self.vel_msg.linear.x = 0
             self.timer1 -= 1
             if self.timer1 == 1:
-                self.timer2 = random.randint(20, 40)
+                self.timer2 = random.randint(10, 15)
         elif not self.timer2 == 0:
             print("drive back")
             self.vel_msg.angular.z = 0
