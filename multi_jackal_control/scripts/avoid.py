@@ -24,7 +24,7 @@ class velo_publisher():
         self.reset_time=3.0
 
         # init the listener?
-        #rospy.init_node('listener', anonymous=True)
+        rospy.init_node('listener', anonymous=True)
         #self.sub = rospy.Subscriber("chatter", topic, listener_callback)
 
     def publish(self):
@@ -53,7 +53,7 @@ if __name__ == '__main__':
         while True:
             vp.publish()
             rospy.sleep(0.2)
-            print("debug print ")
+            #print("debug print ")
 
     except rospy.ROSInterruptException or KeyboardInterrupt: pass
 
