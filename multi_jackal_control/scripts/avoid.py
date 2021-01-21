@@ -44,10 +44,12 @@ class velo_publisher():
         #print("callback worked irgendwie")
         print(data.pose.pose)
 
-        if data.pose.pose.position.x > 5 or data.pose.pose.position.x > -5 or data.pose.pose.position.y > 5 or data.pose.pose.position.y > -5 :
+        if data.pose.pose.position.x > 5 or data.pose.pose.position.x < -5 or data.pose.pose.position.y > 5 or data.pose.pose.position.y < -5:
             self.vel_msg.angular.z = 1
+            self.vel_msg.linear.x = 0
         else:
             self.vel_msg.angular.z = 0
+            self.vel_msg.linear.x = 0.7
 
         return
 
