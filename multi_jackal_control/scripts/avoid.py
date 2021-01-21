@@ -34,7 +34,8 @@ class velo_publisher():
         self.vel_msg.angular.z = random.uniform(-1, 1)
         threading.Timer(self.reset_time, self.reset_var).start()
 
-    def listener_callback(self):
+
+    def listener_callback(self, data):
         print("callback worked irgendwie")
         return
 
@@ -52,6 +53,7 @@ if __name__ == '__main__':
         while True:
             vp.publish()
             rospy.sleep(0.2)
+            print("debug print ")
 
     except rospy.ROSInterruptException or KeyboardInterrupt: pass
 
