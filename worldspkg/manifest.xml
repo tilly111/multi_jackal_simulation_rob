@@ -1,0 +1,12 @@
+<package>
+  <description brief="worldspkg">
+
+     worldspkg
+
+  </description>
+  <author>till</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/worldspkg</url>
+
+</package>
