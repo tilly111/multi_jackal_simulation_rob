@@ -24,7 +24,7 @@ class velo_publisher():
         self.reset_time=3.0
 
         # init the listener?
-        rospy.init_node('listener', anonymous=True)
+        rospy.init_node('listener')
         #self.sub = rospy.Subscriber("chatter", topic, listener_callback)
 
     def publish(self):
