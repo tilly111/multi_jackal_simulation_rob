@@ -25,7 +25,8 @@ class velo_publisher():
         self.reset_time=3.0
 
         # init the listener?
-        self.sub = rospy.Subscriber(ns+"/odom", Odometry, self.listener_callback)
+        print(ns+"/odom_ground_truth")
+        self.sub = rospy.Subscriber(ns+"/odom_ground_truth", Odometry, self.listener_callback)
 
     def publish(self):
         # self.vel_msg.linear.x = random.random()
