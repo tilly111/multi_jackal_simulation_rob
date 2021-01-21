@@ -28,6 +28,9 @@ class velo_publisher():
         print(ns+"/odom_ground_truth")
         self.sub = rospy.Subscriber(ns+"/odom_ground_truth", Odometry, self.listener_callback)
 
+        self.timer1 = 0
+        self.timer2 = 0
+
     def publish(self):
         # self.vel_msg.linear.x = random.random()
         # self.vel_msg.angular.z = random.uniform(-1, 1)
@@ -42,12 +45,30 @@ class velo_publisher():
 
     def listener_callback(self, data):
         #print("callback worked irgendwie")
-        print(data.pose.pose)
+        #print(data.pose.pose)
 
-        if data.pose.pose.position.x > 5 or data.pose.pose.position.x < -5 or data.pose.pose.position.y > 5 or data.pose.pose.position.y < -5:
+        if (data.pose.pose.position.x > 5 or data.pose.pose.position.x < -5 or data.pose.pose.position.y > 5 \
+                or data.pose.pose.position.y < -5) and self.timer1 == 0:
+            print("found to wall")
             self.vel_msg.angular.z = 1
             self.vel_msg.linear.x = 0
+            self.timer1 = random.randint(10, 40)
+        elif not (self.timer1 == 0) and self.timer2 == 0: # dreht sich?
+            print("turning")
+            self.vel_msg.angular.z = 1
+            self.vel_msg.linear.x = 0
+            self.timer1 -= 1
+            if self.timer1 == 1:
+                self.timer2 = random.randint(20, 40)
+        elif not self.timer2 == 0:
+            print("drive back")
+            self.vel_msg.angular.z = 0
+            self.vel_msg.linear.x = 0.7
+            self.timer2 -= 1
+            if self.timer2 == 0:
+                self.timer1 = 0
         else:
+            print("normal drive")
             self.vel_msg.angular.z = 0
             self.vel_msg.linear.x = 0.7
 
