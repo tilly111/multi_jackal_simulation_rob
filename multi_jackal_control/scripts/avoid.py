@@ -24,8 +24,7 @@ class velo_publisher():
         self.reset_time=3.0
 
         # init the listener?
-        rospy.init_node('listener')
-        #self.sub = rospy.Subscriber("chatter", topic, listener_callback)
+        self.sub = rospy.Subscriber(topic, listener_callback)
 
     def publish(self):
         # self.vel_msg.linear.x = random.random()
@@ -53,7 +52,7 @@ if __name__ == '__main__':
         while True:
             vp.publish()
             rospy.sleep(0.2)
-            #print("debug print ")
+            print("debug print ")
 
     except rospy.ROSInterruptException or KeyboardInterrupt: pass
 
